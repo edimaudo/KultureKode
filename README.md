@@ -13,7 +13,7 @@ A Flask web application that helps users explore and understand different countr
 ## Project Structure
 
 ```
-kulture-kode/
+kulturekode/
 │
 ├── app.py                      # Main Flask application
 ├── requirements.txt            # Python dependencies
