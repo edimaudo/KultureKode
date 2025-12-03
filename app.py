@@ -65,6 +65,14 @@ def get_culture_info():
         if not country:
             return jsonify({'error': 'Country not provided'}), 400
 
+ 
+        # CRUCIAL: Instruct the model to generate a *specific* JSON object.
+        system_instruction = (
+            "You are a World renowned travel and cultural expert. Your goal is to provide cultural insights and nuances for different countries in the world "
+            "and provide insights into cultural nuances, traditions, landmarks, architecture, cultural and social norms.  Can recommend key things to look out for. **The output MUST be a strict JSON object.** "
+            "DO NOT include any Markdown formatting, explanations, or text outside of the JSON block."
+        )
+
         # Create detailed prompt for Gemini
         prompt = f"""Provide a comprehensive but concise overview of {country} covering the following aspects:
 
@@ -77,6 +85,7 @@ def get_culture_info():
 4. **Cultural Nuances**: Explain important dos and don'ts, communication styles, and unique cultural traits visitors should know.
 
 Please format the response in a clear, organized manner with headers and concise paragraphs. Keep the total response under 500 words while being informative and engaging."""
+
 
         # Generate response using Gemini
     
