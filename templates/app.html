@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kulture Kode - Explore Cultures</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="app-page">
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="nav-logo">KultureKode</a>
+            <a href="/" class="nav-link">Home</a>
+        </div>
+    </nav>
+
+    <div class="app-container">
+        <div class="search-section">
+            <h1 class="app-title">Discover Cultural Insights</h1>
+            <p class="app-subtitle">Select a country to explore its culture, traditions, and heritage</p>
+            
+            <div class="search-box">
+                <label for="country-select" class="search-label">Choose a Country:</label>
+                <div class="select-wrapper">
+                    <select id="country-select" class="country-select">
+                        <option value="">-- Select a Country --</option>
+                        {% for country in countries %}
+                        <option value="{{ country }}">{{ country }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <button id="explore-btn" class="explore-button">Explore Culture</button>
+            </div>
+        </div>
+
+        <div class="results-section" id="results-section" style="display: none;">
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>Loading cultural insights...</p>
+            </div>
+
+            <div class="results-content" id="results-content" style="display: none;">
+                <div class="results-header">
+                    <h2 id="country-name"></h2>
+                    <button id="new-search-btn" class="secondary-button">Search Another Country</button>
+                </div>
+                <div class="culture-info" id="culture-info"></div>
+            </div>
+
+            <div class="error-message" id="error-message" style="display: none;">
+                <span class="error-icon"></span>
+                <p id="error-text"></p>
+                <button id="retry-btn" class="secondary-button">Try Again</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
