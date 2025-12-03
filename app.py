@@ -22,16 +22,7 @@ if GEMINI_API_KEY:
     #model = genai.GenerativeModel('gemini-pro')
     client = genai.Client(api_key=GEMINI_API_KEY)
         
-    # 2. Add response_mime_type to enforce JSON output
-    response = client.models.generate_content(
-            model='gemini-2.5-flash',
-            contents=full_prompt,
-            config=types.GenerateContentConfig(
-                system_instruction=system_instruction,
-                # *** THE FIX: Force the model to generate valid JSON ***
-                response_mime_type="application/json", 
-            )
-    )
+
 
 # List of countries in alphabetical order
 COUNTRIES = [
@@ -88,7 +79,16 @@ def get_culture_info():
 Please format the response in a clear, organized manner with headers and concise paragraphs. Keep the total response under 500 words while being informative and engaging."""
 
         # Generate response using Gemini
-        response = model.generate_content(prompt)
+    
+    response = client.models.generate_content(
+            model='gemini-2.5-flash',
+            contents=prompt,
+            config=types.GenerateContentConfig(
+                system_instruction=system_instruction,
+                # *** THE FIX: Force the model to generate valid JSON ***
+                response_mime_type="application/json", 
+            )
+    )
         
         return jsonify({
             'country': country,
