@@ -15,9 +15,23 @@ app = Flask(__name__)
 # Set your API key as an environment variable or in .env file
 GEMINI_API_KEY = os.getenv('GEMINI_API_KEY', '')
 
+
+
 if GEMINI_API_KEY:
-    genai.configure(api_key=GEMINI_API_KEY)
-    model = genai.GenerativeModel('gemini-pro')
+    #genai.configure(api_key=GEMINI_API_KEY)
+    #model = genai.GenerativeModel('gemini-pro')
+    client = genai.Client(api_key=GEMINI_API_KEY)
+        
+    # 2. Add response_mime_type to enforce JSON output
+    response = client.models.generate_content(
+            model='gemini-2.5-flash',
+            contents=full_prompt,
+            config=types.GenerateContentConfig(
+                system_instruction=system_instruction,
+                # *** THE FIX: Force the model to generate valid JSON ***
+                response_mime_type="application/json", 
+            )
+    )
 
 # List of countries in alphabetical order
 COUNTRIES = [
