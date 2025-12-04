@@ -1,4 +1,4 @@
-# KultureKode 
+# Kulture Kode 
 
 A Flask web application that helps users explore and understand different countries' cultures, traditions, architecture, and cultural nuances using Google's Gemini AI.
 
