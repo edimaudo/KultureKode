@@ -101,10 +101,10 @@ Please format the response in a clear, organized manner with headers and concise
         #    'information': analysis_data
         #})
         # Return the structured data directly
-        analysis_data = json.loads(response.text)
+        #analysis_data = json.loads(response.text)
         return jsonify({
-                'country': country,
-                "information": analysis_data,
+                #'country': country,
+                "information": response.text,
                 #"success": True
         })
 
