@@ -18,8 +18,6 @@ GEMINI_API_KEY = os.getenv('GEMINI_API_KEY', '')
 
 
 if GEMINI_API_KEY:
-    #genai.configure(api_key=GEMINI_API_KEY)
-    #model = genai.GenerativeModel('gemini-pro')
     client = genai.Client(api_key=GEMINI_API_KEY)
         
 
@@ -105,7 +103,7 @@ Please format the response in a clear, organized manner with headers and concise
         # Return the structured data directly
         analysis_data = json.loads(response.text)
         return jsonify({
-                "analysisData": analysis_data,
+                "information": analysis_data,
                 "success": True
         })
 
