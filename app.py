@@ -88,7 +88,6 @@ Please format the response in a clear, organized manner with headers and concise
 
 
         # Generate response using Gemini
-    
         response = client.models.generate_content(
                     model='gemini-2.5-flash',
                     contents=prompt,
@@ -99,9 +98,15 @@ Please format the response in a clear, organized manner with headers and concise
                     )
         )
         
+        #return jsonify({
+        #    'country': country,
+        #    'information': analysis_data
+        #})
+        # Return the structured data directly
+        analysis_data = json.loads(response.text)
         return jsonify({
-            'country': country,
-            'information': response.text
+                "analysisData": analysis_data,
+                "success": True
         })
 
     except Exception as e:
