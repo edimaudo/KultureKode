@@ -65,10 +65,17 @@ def get_culture_info():
 
  
         # CRUCIAL: Instruct the model to generate a *specific* JSON object.
+        #system_instruction = (
+        #    "You are a World renowned travel and cultural expert. Your goal is to provide cultural insights and nuances for different countries in the world "
+        #    "and provide insights into cultural nuances, traditions, landmarks, architecture, cultural and social norms.  Can recommend key things to look out for. **The output MUST be a strict JSON object.** "
+        #    "DO NOT include any Markdown formatting, explanations, or text outside of the JSON block."
+        #)
+
         system_instruction = (
-            "You are a World renowned travel and cultural expert. Your goal is to provide cultural insights and nuances for different countries in the world "
-            "and provide insights into cultural nuances, traditions, landmarks, architecture, cultural and social norms.  Can recommend key things to look out for. **The output MUST be a strict JSON object.** "
-            "DO NOT include any Markdown formatting, explanations, or text outside of the JSON block."
+            "You are a world-renowned travel and cultural expert. Your goal is to provide cultural insights "
+            "with respect to cultural nuances, traditions, landmarks, architecture, cultural and social norms for different countries in the world. Can recommend key things to look out for. Format your response as readable text with clear "
+            "section headers using **bold** markdown formatting. DO NOT output JSON. Output plain text with "
+            "markdown formatting only."
         )
 
         # Create detailed prompt for Gemini
