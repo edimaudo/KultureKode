@@ -92,7 +92,7 @@ Please format the response in a clear, organized manner with headers and concise
                     config=types.GenerateContentConfig(
                         system_instruction=system_instruction,
                         # *** THE FIX: Force the model to generate valid JSON ***
-                        response_mime_type="application/json", 
+                        #response_mime_type="application/json", 
                     )
         )
         
