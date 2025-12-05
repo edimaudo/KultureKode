@@ -103,8 +103,9 @@ Please format the response in a clear, organized manner with headers and concise
         # Return the structured data directly
         analysis_data = json.loads(response.text)
         return jsonify({
+                'country': country,
                 "information": analysis_data,
-                "success": True
+                #"success": True
         })
 
     except Exception as e:
